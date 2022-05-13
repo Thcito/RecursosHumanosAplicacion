@@ -9,9 +9,12 @@ public class RecurosHumanosApp {
 		
 	Trabajador t1 = new Trabajador ("8888888-d", "prueba", "probando", 66, "asistente", false, true);
 	
+	
+	//Instancia de TrabajadorDAO
 	TrabajadorDAO tDAO = new TrabajadorDAO();
 	
 	try {
+		
 		if(tDAO.agregarTrabajador(t1)) {
 			System.out.println("Nuevo trabajador agregado");
 		}else {

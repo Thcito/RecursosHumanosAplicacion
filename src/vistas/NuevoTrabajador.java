@@ -19,10 +19,14 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+//import para poder trabajar con las otras clases.
+import entidades.Trabajador; //Para llamar al trabajador
+import dao.TrabajadorDAO;	//Para llamar un DAO.
+
 public class NuevoTrabajador extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField txtRut;
+	private JTextField txtDni;
 	private JTextField txtApellido;
 
 	/**
@@ -68,10 +72,10 @@ public class NuevoTrabajador extends JFrame {
 		lblEdad.setBounds(10, 104, 60, 20);
 		contentPane.add(lblEdad);
 		
-		txtRut = new JTextField();
-		txtRut.setBounds(92, 11, 100, 20);
-		contentPane.add(txtRut);
-		txtRut.setColumns(10);
+		txtDni = new JTextField();
+		txtDni.setBounds(92, 11, 100, 20);
+		contentPane.add(txtDni);
+		txtDni.setColumns(10);
 		
 		JTextField txtNombre = new JTextField();
 		txtNombre.setBounds(92, 42, 100, 20);
@@ -119,14 +123,64 @@ public class NuevoTrabajador extends JFrame {
 		
 		JButton btnGuardar = new JButton("Guardar");
 		btnGuardar.addActionListener(new ActionListener() {
+			
+			//Metodo que ejecutara el codigo una vez pulsemos el boton
+			
 			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog(contentPane, "Los datos del formularios se guardaron correctamente");
+				//JOptionPane.showMessageDialog(contentPane, "Los datos del formularios se guardaron correctamente");
+				
+				try {
+				Trabajador t = new Trabajador();
+				
+				t.setDni(txtDni.getText());
+				t.setNombre(txtNombre.getText());
+				t.setApellido(txtApellido.getText());
+				t.setEdad(Integer.parseInt(spnEdad.getValue().toString()));
+				t.setCargo(cboCargo.getSelectedItem().toString());
+				//Si masculino esta seleccionado sera true, si no sera false y sera femenino.
+				t.setGenero(rbtMasculino.isSelected());
+				t.setExtranjero(chkEsExtranjero.isSelected());
+				
+				//Clase TrabajadorDAO agrega trabajador sacando los campos. Lo convierte en sentencia
+				//SQL y la ejecuta y nos dice si es correcta o no mediante la condicion de filas afectadas. 
+				TrabajadorDAO tDAO = new TrabajadorDAO();
+				
+				if (tDAO.agregarTrabajador(t)) {
+					JOptionPane.showMessageDialog(btnGuardar, "Guardado correctamente");
+					//this.limpiar();
+					
+				}else {
+					
+					JOptionPane.showMessageDialog(btnGuardar, "A ocurrido un error");
+				}
+				
+				} catch (Exception e1) {
+					JOptionPane.showMessageDialog(btnGuardar, e1.getMessage());
+				}
 			}
+
 		});
 		btnGuardar.setBounds(320, 227, 89, 23);
 		contentPane.add(btnGuardar);
 		
 		JButton btnLimpiar = new JButton("Limpiar");
+		btnLimpiar.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				this.limpiar();
+			}
+			
+			private void limpiar() {
+				txtDni.setText("");
+				txtNombre.setText("");
+				txtApellido.setText("");
+				spnEdad.setValue(0);
+				cboCargo.setSelectedIndex(0);
+				rbtMasculino.setSelected(true);
+				chkEsExtranjero.setSelected(false);		
+			}
+					
+		});
 		btnLimpiar.setBounds(212, 227, 89, 23);
 		contentPane.add(btnLimpiar);
 	}

@@ -20,19 +20,21 @@ public class TrabajadorDAO {
 		try {
 			String sql = "INSERT INTO trabajador VALUES(?,?,?,?,?,?,?)";
 			
+			//Aqui se prepara la sentencia SQL
 			//PS es el objeto encargado de llevar la consulta hacia la base de datos utilizando la conexión.
-			PreparedStatement stmt =conn.prepareStatement(sql);
+			PreparedStatement stmnt =conn.prepareStatement(sql);
 			
-			stmt.setString(1, trabajador.getDni());
-			stmt.setString(2, trabajador.getNombre());
-			stmt.setString(3, trabajador.getApellido());
-			stmt.setInt(4, trabajador.getEdad());
-			stmt.setString(5, trabajador.getCargo());
-			stmt.setBoolean(6, trabajador.isGenero());
-			stmt.setBoolean(7, trabajador.isExtranjero());
+			stmnt.setString(1, trabajador.getDni());
+			stmnt.setString(2, trabajador.getNombre());
+			stmnt.setString(3, trabajador.getApellido());
+			stmnt.setInt(4, trabajador.getEdad());
+			stmnt.setString(5, trabajador.getCargo());
+			//Al ser Boolean se utiliza in en lugar de get.
+			stmnt.setBoolean(6, trabajador.isGenero());
+			stmnt.setBoolean(7, trabajador.isExtranjero());
 			
-			//Se ejecuta la sentancia SQL 
-			int cantidad = stmt.executeUpdate();
+			//Aqui se ejecuta la sentancia SQL 
+			int cantidad = stmnt.executeUpdate();
 			
 			fueAgregado = (cantidad > 0 );
 			
