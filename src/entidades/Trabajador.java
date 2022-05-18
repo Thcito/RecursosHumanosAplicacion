@@ -7,21 +7,21 @@ public class Trabajador {
 	private String apellido;
 	private int edad;
 	private String cargo;
-	private boolean genero;
+	private boolean sexo;
 	private boolean extranjero;
 
 	public Trabajador() {
 
 	}
 
-	public Trabajador(String dni, String nombre, String apellido, int edad, String cargo, boolean genero, boolean extranjero) {
+	public Trabajador(String dni, String nombre, String apellido, int edad, String cargo, boolean sexo, boolean extranjero) {
 		
 		this.setDni(dni);
 		this.setNombre(nombre);
 		this.setApellido(apellido);
 		this.setEdad(edad);
 		this.setCargo(cargo);
-		this.setGenero(genero);
+		this.setSexo(sexo);
 		this.setExtranjero(extranjero);
 	}
 
@@ -65,12 +65,12 @@ public class Trabajador {
 		this.cargo = cargo;
 	}
 
-	public boolean isGenero() {
-		return genero;
+	public boolean isSexo() {
+		return sexo;
 	}
 
-	public void setGenero(boolean genero) {
-		this.genero = genero;
+	public void setSexo(boolean sexo) {
+		this.sexo = sexo;
 	}
 
 	public boolean isExtranjero() {
@@ -84,7 +84,7 @@ public class Trabajador {
 	@Override
 	public String toString() {
 		return "Trabajador [dni=" + dni + ", nombre=" + nombre + ", apellido=" + apellido + ", edad=" + edad
-				+ ", cargo=" + cargo + ", genero=" + genero + ", extranjero=" + extranjero + "]";
+				+ ", cargo=" + cargo + ", sexo=" + sexo + ", extranjero=" + extranjero + "]";
 	}
 
 }

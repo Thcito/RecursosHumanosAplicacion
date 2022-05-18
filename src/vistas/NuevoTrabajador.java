@@ -28,11 +28,11 @@ public class NuevoTrabajador extends JFrame {
 	private JPanel contentPane;
 	private JTextField txtDni;
 	private JTextField txtApellido;
-
+	
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	public static void main(String[] args) {					
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -126,8 +126,7 @@ public class NuevoTrabajador extends JFrame {
 			
 			//Metodo que ejecutara el codigo una vez pulsemos el boton
 			
-			public void actionPerformed(ActionEvent e) {
-				//JOptionPane.showMessageDialog(contentPane, "Los datos del formularios se guardaron correctamente");
+			public void actionPerformed(ActionEvent e) {				
 				
 				try {
 				Trabajador t = new Trabajador();
@@ -138,7 +137,7 @@ public class NuevoTrabajador extends JFrame {
 				t.setEdad(Integer.parseInt(spnEdad.getValue().toString()));
 				t.setCargo(cboCargo.getSelectedItem().toString());
 				//Si masculino esta seleccionado sera true, si no sera false y sera femenino.
-				t.setGenero(rbtMasculino.isSelected());
+				t.setSexo(rbtMasculino.isSelected());
 				t.setExtranjero(chkEsExtranjero.isSelected());
 				
 				//Clase TrabajadorDAO agrega trabajador sacando los campos. Lo convierte en sentencia
@@ -159,6 +158,8 @@ public class NuevoTrabajador extends JFrame {
 				}
 			}
 
+			
+
 		});
 		btnGuardar.setBounds(320, 227, 89, 23);
 		contentPane.add(btnGuardar);
@@ -171,6 +172,7 @@ public class NuevoTrabajador extends JFrame {
 			}
 			
 			private void limpiar() {
+				
 				txtDni.setText("");
 				txtNombre.setText("");
 				txtApellido.setText("");
@@ -178,6 +180,7 @@ public class NuevoTrabajador extends JFrame {
 				cboCargo.setSelectedIndex(0);
 				rbtMasculino.setSelected(true);
 				chkEsExtranjero.setSelected(false);		
+				
 			}
 					
 		});
