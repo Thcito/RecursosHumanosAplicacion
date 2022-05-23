@@ -38,6 +38,10 @@ public class Trabajador {
 	}
 
 	public void setNombre(String nombre) {
+		
+		if (nombre.length() < 3 || nombre.length() > 100 ) {
+			throw new IllegalArgumentException("El largo debe estar entre 3 y 100 caracteres");
+		}
 		this.nombre = nombre;
 	}
 
@@ -54,6 +58,9 @@ public class Trabajador {
 	}
 
 	public void setEdad(int edad) {
+		if (edad < 18) {
+			throw new IllegalArgumentException("La persona debe ser mayor de edad");
+		}
 		this.edad = edad;
 	}
 

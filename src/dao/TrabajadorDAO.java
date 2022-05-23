@@ -93,6 +93,7 @@ public class TrabajadorDAO {
 
 		}
 		return trabajadores;
+		
 
 	}
 	
@@ -139,5 +140,27 @@ public class TrabajadorDAO {
 		return trabajadores;
 
 	}
-
+	
+	public boolean eliminarTrabajador(String dni) throws SQLException {
+		
+		boolean fueEliminado = false;
+		
+		Connection conn = conexion.conectar();
+		
+		try {
+			
+			String sql = "DELETE FROM trabajador WHERE dni = ?";
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			stmt.setString(1, dni);
+			
+			fueEliminado = (stmt.executeUpdate() > 0);
+					
+					
+		} catch (Exception e) {
+			System.out.println("Error eliminando contacto" + e.getMessage());
+		}finally {
+			conn.close();
+		}
+		return fueEliminado;
+	}
 }
