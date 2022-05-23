@@ -1,6 +1,6 @@
 package vistas;
 
-import java.awt.BorderLayout;
+
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -22,7 +22,7 @@ import java.awt.event.ActionEvent;
 //import para poder trabajar con las otras clases.
 import entidades.Trabajador; //Para llamar al trabajador
 import dao.TrabajadorDAO; //Para llamar un DAO.
-
+@SuppressWarnings("serial")
 public class NuevoTrabajador extends JFrame {
 
 	private JPanel contentPane;

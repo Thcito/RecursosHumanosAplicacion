@@ -1,8 +1,8 @@
 package recuersoshumanosapp;
 
-import entidades.Trabajador;
+
 import java.sql.SQLException;
-import java.util.ArrayList;
+
 
 import dao.TrabajadorDAO;
 

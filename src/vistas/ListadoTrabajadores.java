@@ -1,6 +1,6 @@
 package vistas;
 
-import java.awt.BorderLayout;
+
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -23,6 +23,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
+@SuppressWarnings("serial")
 public class ListadoTrabajadores extends JFrame {
 
 	// Colocamos el Arraylist a nivel de clase para tener acceso desde todos los
