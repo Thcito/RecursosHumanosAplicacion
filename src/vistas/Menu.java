@@ -59,17 +59,20 @@ public class Menu extends JFrame {
 
 		JMenuItem mntmNewMenuItem_1 = new JMenuItem("Agregar");
 		mntmNewMenuItem_1.addActionListener(new ActionListener() {
+			
 			public void actionPerformed(ActionEvent e) {
 
 				NuevoTrabajador agregar = new NuevoTrabajador();
 				agregar.setVisible(true);
 			}
 		});
+		
 		mnNewMenu.add(mntmNewMenuItem_1);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
+		
 	}
 
 }

@@ -20,21 +20,24 @@ public class TrabajadorDAO {
 		Connection conn = conexion.conectar();
 
 		try {
-			String sql = "INSERT INTO trabajador VALUES(?,?,?,?,?,?,?)";
+			String sql = "INSERT INTO trabajador VALUES(?,?,?,?,?,?,?,?,?,?)";
 
 			// Aqui se prepara la sentencia SQL
-			// PS es el objeto encargado de llevar la consulta hacia la base de datos
+			// PreparedStatement es el objeto encargado de llevar la consulta hacia la base de datos
 			// utilizando la conexión.
 			PreparedStatement stmnt = conn.prepareStatement(sql);
 
 			stmnt.setString(1, trabajador.getDni());
 			stmnt.setString(2, trabajador.getNombre());
 			stmnt.setString(3, trabajador.getApellido());
-			stmnt.setInt(4, trabajador.getEdad());
-			stmnt.setString(5, trabajador.getCargo());
+			stmnt.setString(4, trabajador.getDireccion());
+			stmnt.setString(5, trabajador.getEmail());
+			stmnt.setFloat(6, trabajador.getTelefono());
+			stmnt.setInt(7, trabajador.getEdad());
+			stmnt.setString(8, trabajador.getCargo());
 			// Al ser Boolean se utiliza in en lugar de get.
-			stmnt.setBoolean(6, trabajador.isSexo());
-			stmnt.setBoolean(7, trabajador.isExtranjero());
+			stmnt.setBoolean(9, trabajador.isSexo());
+			stmnt.setBoolean(10, trabajador.isExtranjero());
 
 			// Aqui se ejecuta la sentancia SQL
 			int cantidad = stmnt.executeUpdate();
@@ -76,6 +79,9 @@ public class TrabajadorDAO {
 				t.setDni(rs.getString("dni"));
 				t.setNombre(rs.getString("nombre"));
 				t.setApellido(rs.getString("apellido"));
+				t.setDireccion(rs.getString("direccion"));
+				t.setEmail(rs.getString("email"));
+				t.setTelefono(rs.getFloat("telefono"));
 				t.setEdad(rs.getInt("edad"));
 				t.setCargo(rs.getString("cargo"));
 				t.setSexo(rs.getBoolean("sexo"));
@@ -121,6 +127,9 @@ public class TrabajadorDAO {
 				t.setDni(rs.getString("dni"));
 				t.setNombre(rs.getString("nombre"));
 				t.setApellido(rs.getString("apellido"));
+				t.setDireccion(rs.getString("direccion"));
+				t.setEmail(rs.getString("email"));
+				t.setTelefono(rs.getFloat("telefono"));
 				t.setEdad(rs.getInt("edad"));
 				t.setCargo(rs.getString("cargo"));
 				t.setSexo(rs.getBoolean("sexo"));

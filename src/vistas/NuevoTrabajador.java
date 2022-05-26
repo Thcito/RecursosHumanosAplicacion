@@ -1,6 +1,5 @@
 package vistas;
 
-
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -21,13 +20,18 @@ import java.awt.event.ActionEvent;
 
 //import para poder trabajar con las otras clases.
 import entidades.Trabajador; //Para llamar al trabajador
-import dao.TrabajadorDAO; //Para llamar un DAO.
+import dao.TrabajadorDAO;
+import javax.swing.SpinnerNumberModel; //Para llamar un DAO.
+
 @SuppressWarnings("serial")
 public class NuevoTrabajador extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField txtDni;
 	private JTextField txtApellido;
+	private JTextField txtDireccion;
+	private JTextField txtEmail;
+	private JTextField txtTelefono;
 
 	/**
 	 * Launch the application.
@@ -37,7 +41,7 @@ public class NuevoTrabajador extends JFrame {
 			public void run() {
 				try {
 					NuevoTrabajador frame = new NuevoTrabajador();
-					//frame.setExtendedState(MAXIMIZED_BOTH);
+					// frame.setExtendedState(MAXIMIZED_BOTH);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -51,7 +55,7 @@ public class NuevoTrabajador extends JFrame {
 	 */
 	public NuevoTrabajador() {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 452, 425);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -70,7 +74,7 @@ public class NuevoTrabajador extends JFrame {
 		contentPane.add(lblApellido);
 
 		JLabel lblEdad = new JLabel("Edad");
-		lblEdad.setBounds(10, 104, 60, 20);
+		lblEdad.setBounds(10, 190, 60, 20);
 		contentPane.add(lblEdad);
 
 		txtDni = new JTextField();
@@ -87,45 +91,73 @@ public class NuevoTrabajador extends JFrame {
 		txtApellido.setBounds(92, 73, 100, 20);
 		contentPane.add(txtApellido);
 		txtApellido.setColumns(10);
+		
+		txtDireccion = new JTextField();
+		txtDireccion.setBounds(92, 104, 100, 20);
+		contentPane.add(txtDireccion);
+		txtDireccion.setColumns(10);
 
+		txtEmail = new JTextField();
+		txtEmail.setBounds(92, 135, 100, 20);
+		contentPane.add(txtEmail);
+		txtEmail.setColumns(10);
+
+		txtTelefono = new JTextField();
+		txtTelefono.setBounds(92, 163, 100, 20);
+		contentPane.add(txtTelefono);
+		txtTelefono.setColumns(10);
+
+		JLabel lblDireccion = new JLabel("Direcci\u00F3n");
+		lblDireccion.setBounds(10, 110, 60, 20);
+		contentPane.add(lblDireccion);
+
+		JLabel lblEmail = new JLabel("Email");
+		lblEmail.setBounds(10, 138, 60, 20);
+		contentPane.add(lblEmail);
+
+		JLabel lblTelefono = new JLabel("Telefono");
+		lblTelefono.setBounds(10, 163, 60, 20);
+		contentPane.add(lblTelefono);
+		
 		JSpinner spnEdad = new JSpinner();
-		spnEdad.setBounds(92, 104, 100, 20);
+		spnEdad.setModel(new SpinnerNumberModel(0, 0, 65, 1));
+		spnEdad.setBounds(92, 190, 100, 20);
 		contentPane.add(spnEdad);
 
 		JLabel lblCargo = new JLabel("Cargo");
-		lblCargo.setBounds(10, 135, 60, 20);
+		lblCargo.setBounds(10, 236, 60, 20);
 		contentPane.add(lblCargo);
 
 		JComboBox cboCargo = new JComboBox();
 		cboCargo.setModel(new DefaultComboBoxModel(new String[] { "Gerente", "Asistente", "Vendedor" }));
-		cboCargo.setBounds(92, 135, 100, 22);
+		cboCargo.setBounds(92, 235, 100, 22);
 		contentPane.add(cboCargo);
 
 		JLabel lblSexo = new JLabel("Sexo");
-		lblSexo.setBounds(10, 166, 60, 20);
+		lblSexo.setBounds(10, 283, 60, 20);
 		contentPane.add(lblSexo);
 
 		JRadioButton rbtMasculino = new JRadioButton("Masculino");
 		rbtMasculino.setSelected(true);
-		rbtMasculino.setBounds(83, 165, 109, 23);
+		rbtMasculino.setBounds(83, 282, 109, 23);
 		contentPane.add(rbtMasculino);
 
 		JRadioButton rbtFemenino = new JRadioButton("Femenino");
-		rbtFemenino.setBounds(201, 165, 109, 23);
+		rbtFemenino.setBounds(194, 282, 109, 23);
 		contentPane.add(rbtFemenino);
 
+		// Creación de BottonGroup para evitar seleccion multiple
 		ButtonGroup group = new ButtonGroup();
 		group.add(rbtMasculino);
 		group.add(rbtFemenino);
 
 		JCheckBox chkEsExtranjero = new JCheckBox("\u00BFEs extranjero?");
-		chkEsExtranjero.setBounds(6, 193, 116, 23);
+		chkEsExtranjero.setBounds(10, 331, 116, 23);
 		contentPane.add(chkEsExtranjero);
 
 		JButton btnGuardar = new JButton("Guardar");
 		btnGuardar.addActionListener(new ActionListener() {
-		
-			
+
 			// Metodo que ejecutara el codigo una vez pulsemos el boton
 
 			public void actionPerformed(ActionEvent e) {
@@ -136,6 +168,11 @@ public class NuevoTrabajador extends JFrame {
 					t.setDni(txtDni.getText());
 					t.setNombre(txtNombre.getText());
 					t.setApellido(txtApellido.getText());
+					t.setDireccion(txtDireccion.getText());
+					t.setEmail(txtEmail.getText());
+					
+					t.setTelefono(Float.parseFloat(txtTelefono.getText())); 
+					
 					t.setEdad(Integer.parseInt(spnEdad.getValue().toString()));
 					t.setCargo(cboCargo.getSelectedItem().toString());
 					// Si masculino esta seleccionado sera true, si no sera false y sera femenino.
@@ -150,7 +187,7 @@ public class NuevoTrabajador extends JFrame {
 
 					if (tDAO.agregarTrabajador(t)) {
 						JOptionPane.showMessageDialog(btnGuardar, "Guardado correctamente");
-						this.limpiar();
+						limpiar();
 
 					} else {
 
@@ -167,22 +204,25 @@ public class NuevoTrabajador extends JFrame {
 				txtDni.setText("");
 				txtNombre.setText("");
 				txtApellido.setText("");
+				txtDireccion.setText("");
+				txtEmail.setText("");
+				txtTelefono.setText("");
 				spnEdad.setValue(0);
-				cboCargo.setSelectedIndex(0);
-				rbtMasculino.setSelected(true);
+				cboCargo.setSelectedIndex(-1);
+				rbtMasculino.setSelected(false);
 				chkEsExtranjero.setSelected(false);
 
 			}
 
 		});
-		btnGuardar.setBounds(320, 227, 89, 23);
+		btnGuardar.setBounds(337, 352, 89, 23);
 		contentPane.add(btnGuardar);
 
 		JButton btnLimpiar = new JButton("Limpiar");
 		btnLimpiar.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
-				this.limpiar();
+				limpiar();
 			}
 
 			private void limpiar() {
@@ -190,15 +230,20 @@ public class NuevoTrabajador extends JFrame {
 				txtDni.setText("");
 				txtNombre.setText("");
 				txtApellido.setText("");
-				spnEdad.setValue(0);
+				txtDireccion.setText("");
+				txtEmail.setText("");
+				txtTelefono.setText("");
+				spnEdad.setValue(-1);
 				cboCargo.setSelectedIndex(0);
-				rbtMasculino.setSelected(true);
+				rbtMasculino.setSelected(false);
 				chkEsExtranjero.setSelected(false);
 
 			}
 
 		});
-		btnLimpiar.setBounds(212, 227, 89, 23);
+		btnLimpiar.setBounds(238, 352, 89, 23);
 		contentPane.add(btnLimpiar);
+
+		
 	}
 }

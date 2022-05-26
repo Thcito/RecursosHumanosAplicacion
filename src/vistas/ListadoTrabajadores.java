@@ -52,7 +52,6 @@ public class ListadoTrabajadores extends JFrame {
 				}
 			}
 		});
-
 	}
 
 	/**
@@ -103,6 +102,9 @@ public class ListadoTrabajadores extends JFrame {
 					modelo.addColumn("DNI");
 					modelo.addColumn("NOMBRE");
 					modelo.addColumn("APELLIDO");
+					modelo.addColumn("DIRECCION");
+					modelo.addColumn("EMAIL");
+					modelo.addColumn("TELEFONO");
 					modelo.addColumn("EDAD");
 					modelo.addColumn("CARGO");
 					modelo.addColumn("SEXO");
@@ -117,21 +119,24 @@ public class ListadoTrabajadores extends JFrame {
 						fila[0] = i.getDni();
 						fila[1] = i.getNombre();
 						fila[2] = i.getApellido();
+						fila[3] = i.getDireccion();
+						fila[4] = i.getEmail();
+						fila[5]	= String.valueOf(i.getTelefono());
 						// Para convertir al tipo valido (String) se usa el metodo ValueOf.
-						fila[3] = String.valueOf(i.getEdad());
-						fila[4] = i.getCargo();
+						fila[6] = String.valueOf(i.getEdad());
+						fila[7] = i.getCargo();
 						// Para poder mostrar opciones validas al usuario y no true o false, montamos
 						// una condicion if.
 						if (i.isSexo()) {
-							fila[5] = "Masculino"; // Si es true
+							fila[8] = "Masculino"; // Si es true
 						} else {
-							fila[6] = "Femenino"; // Si es false
+							fila[8] = "Femenino"; // Si es false
 						}
 
 						if (i.isExtranjero()) {
-							fila[6] = "Si";
+							fila[9] = "Si";
 						} else {
-							fila[6] = "No";
+							fila[9] = "No";
 						}
 						// CUANDO SE GENERE GUARDAMOS ESTE STRING DENTRO DEL MODELO.
 						modelo.addRow(fila);

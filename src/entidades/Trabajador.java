@@ -5,6 +5,9 @@ public class Trabajador {
 	private String dni;
 	private String nombre;
 	private String apellido;
+	private String direccion;
+	private String email;
+	private float telefono;
 	private int edad;
 	private String cargo;
 	private boolean sexo;
@@ -14,11 +17,15 @@ public class Trabajador {
 
 	}
 
-	public Trabajador(String dni, String nombre, String apellido, int edad, String cargo, boolean sexo, boolean extranjero) {
-		
+	public Trabajador(String dni, String nombre, String apellido, String direccion, String email, float telefono,
+			int edad, String cargo, boolean sexo, boolean extranjero) {
+
 		this.setDni(dni);
 		this.setNombre(nombre);
 		this.setApellido(apellido);
+		this.setDireccion(direccion);
+		this.setEmail(email);
+		this.setTelefono(telefono);
 		this.setEdad(edad);
 		this.setCargo(cargo);
 		this.setSexo(sexo);
@@ -30,6 +37,14 @@ public class Trabajador {
 	}
 
 	public void setDni(String dni) {
+
+		if (dni.length() > 9) {
+			throw new IllegalArgumentException("El largo campo del dni no puede ser superior a 9");
+		} else if (dni.length() < 9) {
+
+			// String.format("%09d" , dni);
+		}
+
 		this.dni = dni;
 	}
 
@@ -38,9 +53,9 @@ public class Trabajador {
 	}
 
 	public void setNombre(String nombre) {
-		
-		if (nombre.length() < 3 || nombre.length() > 100 ) {
-			throw new IllegalArgumentException("El largo debe estar entre 3 y 100 caracteres");
+
+		if (nombre.length() < 3 || nombre.length() > 30) {
+			throw new IllegalArgumentException("El largo debe estar entre 3 y 30 caracteres");
 		}
 		this.nombre = nombre;
 	}
@@ -50,6 +65,11 @@ public class Trabajador {
 	}
 
 	public void setApellido(String apellido) {
+
+		if (apellido.length() < 3 || apellido.length() > 30) {
+			throw new IllegalArgumentException("El largo debe estar entre 3 y 30 caracteres");
+		}
+
 		this.apellido = apellido;
 	}
 
@@ -88,10 +108,37 @@ public class Trabajador {
 		this.extranjero = extranjero;
 	}
 
+	public String getDireccion() {
+		return direccion;
+	}
+
+	public void setDireccion(String direccion) {
+		this.direccion = direccion;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public float getTelefono() {
+		return telefono;
+	}
+
+	public void setTelefono(float telefono) {
+		this.telefono = telefono;
+	}
+
 	@Override
 	public String toString() {
-		return "Trabajador [dni=" + dni + ", nombre=" + nombre + ", apellido=" + apellido + ", edad=" + edad
-				+ ", cargo=" + cargo + ", sexo=" + sexo + ", extranjero=" + extranjero + "]";
+		return "Trabajador [dni=" + dni + ", nombre=" + nombre + ", apellido=" + apellido + ", direccion=" + direccion
+				+ ", email=" + email + ", telefono=" + telefono + ", edad=" + edad + ", cargo=" + cargo + ", sexo="
+				+ sexo + ", extranjero=" + extranjero + "]";
 	}
+
+	
 
 }

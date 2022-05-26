@@ -12,7 +12,7 @@ public class Conexion {
 	// Variables para la gestión de la conexión.
 	private String host = "localhost:3306";
 	private String usuario = "root";
-	private String bd = "recursos_humanos";
+	private String bd = "recursos_humanos1";
 	private String contraseña = "";
 
 	private String url = "jdbc:mysql://" + host + "/" + bd;
@@ -23,7 +23,7 @@ public class Conexion {
 		try {
 			//Carga de libreria mysql-connector
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			this.conexion = DriverManager.getConnection(this.url, this.usuario, this.contraseña);
+			this.conexion = DriverManager.getConnection(url, usuario, contraseña);
 
 		} catch (ClassNotFoundException e) {
 			System.out.println("Error en la conexión " + e);
