@@ -1,9 +1,6 @@
 package dao;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 
 import bd.Conexion;
@@ -17,6 +14,7 @@ public class TrabajadorDAO {
 	public boolean agregarTrabajador(Trabajador trabajador) throws SQLException {
 
 		boolean fueAgregado = false;
+		
 		Connection conn = conexion.conectar();
 
 		try {
@@ -56,6 +54,7 @@ public class TrabajadorDAO {
 
 	}
 
+	
 	public ArrayList<Trabajador> listaTrabajadores() throws SQLException {
 
 		ArrayList<Trabajador> trabajadores = new ArrayList<>();

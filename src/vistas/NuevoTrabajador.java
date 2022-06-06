@@ -16,6 +16,7 @@ import javax.swing.JRadioButton;
 import javax.swing.JCheckBox;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.util.ResourceBundle;
 import java.awt.event.ActionEvent;
 
 //import para poder trabajar con las otras clases.
@@ -61,19 +62,19 @@ public class NuevoTrabajador extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
-		JLabel lblDni = new JLabel("DNI");
+		JLabel lblDni = new JLabel(Messages.getString("NuevoTrabajador.lblDni.text")); //$NON-NLS-1$
 		lblDni.setBounds(10, 11, 60, 20);
 		contentPane.add(lblDni);
 
-		JLabel lblNombre = new JLabel("Nombre");
+		JLabel lblNombre = new JLabel(Messages.getString("NuevoTrabajador.lblNombre.text")); //$NON-NLS-1$
 		lblNombre.setBounds(10, 42, 60, 20);
 		contentPane.add(lblNombre);
 
-		JLabel lblApellido = new JLabel("Apellido");
+		JLabel lblApellido = new JLabel(Messages.getString("NuevoTrabajador.lblApellido.text")); //$NON-NLS-1$
 		lblApellido.setBounds(10, 73, 60, 20);
 		contentPane.add(lblApellido);
 
-		JLabel lblEdad = new JLabel("Edad");
+		JLabel lblEdad = new JLabel(Messages.getString("NuevoTrabajador.lblEdad.text")); //$NON-NLS-1$
 		lblEdad.setBounds(10, 190, 60, 20);
 		contentPane.add(lblEdad);
 
@@ -91,7 +92,7 @@ public class NuevoTrabajador extends JFrame {
 		txtApellido.setBounds(92, 73, 100, 20);
 		contentPane.add(txtApellido);
 		txtApellido.setColumns(10);
-		
+
 		txtDireccion = new JTextField();
 		txtDireccion.setBounds(92, 104, 100, 20);
 		contentPane.add(txtDireccion);
@@ -107,24 +108,24 @@ public class NuevoTrabajador extends JFrame {
 		contentPane.add(txtTelefono);
 		txtTelefono.setColumns(10);
 
-		JLabel lblDireccion = new JLabel("Direcci\u00F3n");
+		JLabel lblDireccion = new JLabel(Messages.getString("NuevoTrabajador.lblDireccion.text")); //$NON-NLS-1$
 		lblDireccion.setBounds(10, 110, 60, 20);
 		contentPane.add(lblDireccion);
 
-		JLabel lblEmail = new JLabel("Email");
+		JLabel lblEmail = new JLabel(Messages.getString("NuevoTrabajador.lblEmail.text")); //$NON-NLS-1$
 		lblEmail.setBounds(10, 138, 60, 20);
 		contentPane.add(lblEmail);
 
-		JLabel lblTelefono = new JLabel("Telefono");
+		JLabel lblTelefono = new JLabel(Messages.getString("NuevoTrabajador.lblTelefono.text")); //$NON-NLS-1$
 		lblTelefono.setBounds(10, 163, 60, 20);
 		contentPane.add(lblTelefono);
-		
+
 		JSpinner spnEdad = new JSpinner();
 		spnEdad.setModel(new SpinnerNumberModel(0, 0, 65, 1));
 		spnEdad.setBounds(92, 190, 100, 20);
 		contentPane.add(spnEdad);
 
-		JLabel lblCargo = new JLabel("Cargo");
+		JLabel lblCargo = new JLabel(Messages.getString("NuevoTrabajador.lblCargo.text")); //$NON-NLS-1$
 		lblCargo.setBounds(10, 236, 60, 20);
 		contentPane.add(lblCargo);
 
@@ -133,16 +134,16 @@ public class NuevoTrabajador extends JFrame {
 		cboCargo.setBounds(92, 235, 100, 22);
 		contentPane.add(cboCargo);
 
-		JLabel lblSexo = new JLabel("Sexo");
+		JLabel lblSexo = new JLabel(Messages.getString("NuevoTrabajador.lblSexo.text")); //$NON-NLS-1$
 		lblSexo.setBounds(10, 283, 60, 20);
 		contentPane.add(lblSexo);
 
-		JRadioButton rbtMasculino = new JRadioButton("Masculino");
+		JRadioButton rbtMasculino = new JRadioButton(Messages.getString("NuevoTrabajador.rbtMasculino.text")); //$NON-NLS-1$
 		rbtMasculino.setSelected(true);
 		rbtMasculino.setBounds(83, 282, 109, 23);
 		contentPane.add(rbtMasculino);
 
-		JRadioButton rbtFemenino = new JRadioButton("Femenino");
+		JRadioButton rbtFemenino = new JRadioButton(Messages.getString("NuevoTrabajador.rbtFemenino.text")); //$NON-NLS-1$
 		rbtFemenino.setBounds(194, 282, 109, 23);
 		contentPane.add(rbtFemenino);
 
@@ -151,11 +152,11 @@ public class NuevoTrabajador extends JFrame {
 		group.add(rbtMasculino);
 		group.add(rbtFemenino);
 
-		JCheckBox chkEsExtranjero = new JCheckBox("\u00BFEs extranjero?");
+		JCheckBox chkEsExtranjero = new JCheckBox(Messages.getString("NuevoTrabajador.chkEsExtranjero.text")); //$NON-NLS-1$
 		chkEsExtranjero.setBounds(10, 331, 116, 23);
 		contentPane.add(chkEsExtranjero);
 
-		JButton btnGuardar = new JButton("Guardar");
+		JButton btnGuardar = new JButton(Messages.getString("NuevoTrabajador.btnGuardar.text")); //$NON-NLS-1$
 		btnGuardar.addActionListener(new ActionListener() {
 
 			// Metodo que ejecutara el codigo una vez pulsemos el boton
@@ -170,9 +171,9 @@ public class NuevoTrabajador extends JFrame {
 					t.setApellido(txtApellido.getText());
 					t.setDireccion(txtDireccion.getText());
 					t.setEmail(txtEmail.getText());
-					
-					t.setTelefono(Float.parseFloat(txtTelefono.getText())); 
-					
+
+					t.setTelefono(Float.parseFloat(txtTelefono.getText()));
+
 					t.setEdad(Integer.parseInt(spnEdad.getValue().toString()));
 					t.setCargo(cboCargo.getSelectedItem().toString());
 					// Si masculino esta seleccionado sera true, si no sera false y sera femenino.
@@ -218,7 +219,7 @@ public class NuevoTrabajador extends JFrame {
 		btnGuardar.setBounds(337, 352, 89, 23);
 		contentPane.add(btnGuardar);
 
-		JButton btnLimpiar = new JButton("Limpiar");
+		JButton btnLimpiar = new JButton(Messages.getString("NuevoTrabajador.btnLimpiar.text")); //$NON-NLS-1$
 		btnLimpiar.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
@@ -244,6 +245,56 @@ public class NuevoTrabajador extends JFrame {
 		btnLimpiar.setBounds(238, 352, 89, 23);
 		contentPane.add(btnLimpiar);
 
-		
+		JButton btnIngles = new JButton(Messages.getString("NuevoTrabajador.btnNewButton.text")); //$NON-NLS-1$
+		btnIngles.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+
+				ResourceBundle resource = ResourceBundle.getBundle("vistas/messages_en_Us");
+
+				lblCargo.setText(resource.getString("NuevoTrabajador.lblCargo.text"));
+				lblNombre.setText(resource.getString("NuevoTrabajador.lblNombre.text"));
+				lblTelefono.setText(resource.getString("NuevoTrabajador.lblTelefono.text"));
+				lblDireccion.setText(resource.getString("NuevoTrabajador.lblDireccion.text"));
+				rbtMasculino.setText(resource.getString("NuevoTrabajador.rbtMasculino.text"));
+				lblDni.setText(resource.getString("NuevoTrabajador.lblDni.text"));
+				lblEmail.setText(resource.getString("NuevoTrabajador.lblEmail.text"));
+				rbtFemenino.setText(resource.getString("NuevoTrabajador.rbtFemenino.text"));
+				btnGuardar.setText(resource.getString("NuevoTrabajador.btnGuardar.text"));
+				chkEsExtranjero.setText(resource.getString("NuevoTrabajador.chkEsExtranjero.text"));
+				lblSexo.setText(resource.getString("NuevoTrabajador.lblSexo.text"));
+				btnLimpiar.setText(resource.getString("NuevoTrabajador.btnLimpiar.text"));
+				lblEdad.setText(resource.getString("NuevoTrabajador.lblEdad.text"));
+				lblApellido.setText(resource.getString("NuevoTrabajador.lblApellido.text"));
+
+			}
+		});
+		btnIngles.setBounds(337, 10, 89, 23);
+		contentPane.add(btnIngles);
+
+		JButton btnEspañol = new JButton(Messages.getString("NuevoTrabajador.btnInlges.text")); //$NON-NLS-1$
+		btnEspañol.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+
+				ResourceBundle resource = ResourceBundle.getBundle("vistas/messages");
+
+				lblCargo.setText(resource.getString("NuevoTrabajador.lblCargo.text"));
+				lblNombre.setText(resource.getString("NuevoTrabajador.lblNombre.text"));
+				lblTelefono.setText(resource.getString("NuevoTrabajador.lblTelefono.text"));
+				lblDireccion.setText(resource.getString("NuevoTrabajador.lblDireccion.text"));
+				rbtMasculino.setText(resource.getString("NuevoTrabajador.rbtMasculino.text"));
+				lblDni.setText(resource.getString("NuevoTrabajador.lblDni.text"));
+				lblEmail.setText(resource.getString("NuevoTrabajador.lblEmail.text"));
+				rbtFemenino.setText(resource.getString("NuevoTrabajador.rbtFemenino.text"));
+				btnGuardar.setText(resource.getString("NuevoTrabajador.btnGuardar.text"));
+				chkEsExtranjero.setText(resource.getString("NuevoTrabajador.chkEsExtranjero.text"));
+				lblSexo.setText(resource.getString("NuevoTrabajador.lblSexo.text"));
+				btnLimpiar.setText(resource.getString("NuevoTrabajador.btnLimpiar.text"));
+				lblEdad.setText(resource.getString("NuevoTrabajador.lblEdad.text"));
+				lblApellido.setText(resource.getString("NuevoTrabajador.lblApellido.text"));
+			}
+		});
+		btnEspañol.setBounds(337, 41, 89, 23);
+		contentPane.add(btnEspañol);
+
 	}
 }

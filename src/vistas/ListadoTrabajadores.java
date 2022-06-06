@@ -21,7 +21,9 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.ResourceBundle;
 import java.awt.event.ActionEvent;
+import javax.swing.LayoutStyle.ComponentPlacement;
 
 @SuppressWarnings("serial")
 public class ListadoTrabajadores extends JFrame {
@@ -35,6 +37,8 @@ public class ListadoTrabajadores extends JFrame {
 	private JTextField txtDni;
 	private JButton btnBuscar;
 	private JButton btnEliminar;
+	private JButton btnIngles;
+	private JButton btnEspañol;
 
 	/**
 	 * Launch the application.
@@ -60,7 +64,7 @@ public class ListadoTrabajadores extends JFrame {
 	public ListadoTrabajadores() {
 				
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 780, 384);
+		setBounds(100, 100, 763, 376);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -70,7 +74,7 @@ public class ListadoTrabajadores extends JFrame {
 		txtDni = new JTextField();
 		txtDni.setColumns(10);
 
-		btnBuscar = new JButton("Buscar");
+		btnBuscar = new JButton(Messages.getString("ListadoTrabajadores.btnBuscar.text")); //$NON-NLS-1$
 		btnBuscar.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
@@ -114,7 +118,7 @@ public class ListadoTrabajadores extends JFrame {
 
 					for (Trabajador i : trabajadores) {
 
-						String[] fila = new String[7];
+						String[] fila = new String[10];
 
 						fila[0] = i.getDni();
 						fila[1] = i.getNombre();
@@ -153,7 +157,7 @@ public class ListadoTrabajadores extends JFrame {
 
 		});
 
-		btnEliminar = new JButton("Eliminar");
+		btnEliminar = new JButton(Messages.getString("ListadoTrabajadores.btnEliminar.text")); //$NON-NLS-1$
 		btnEliminar.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
@@ -246,35 +250,92 @@ public class ListadoTrabajadores extends JFrame {
 			}
 
 		});
+		
+		btnIngles = new JButton(Messages.getString("ListadoTrabajadores.btnNewButton.text")); //$NON-NLS-1$
+		btnIngles.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				ResourceBundle resource = ResourceBundle.getBundle("vistas/messages_en_Us");
+				btnBuscar.setText(resource.getString("ListadoTrabajadores.btnBuscar.text"));
+				btnEliminar.setText(resource.getString("ListadoTrabajadores.btnEliminar.text"));
+			}
+		});
+		
+		btnEspañol = new JButton(Messages.getString("ListadoTrabajadores.btnNewButton_1.text")); //$NON-NLS-1$
+		btnEspañol.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				ResourceBundle resource = ResourceBundle.getBundle("vistas/messages");
+				btnBuscar.setText(resource.getString("ListadoTrabajadores.btnBuscar.text"));
+				btnEliminar.setText(resource.getString("ListadoTrabajadores.btnEliminar.text"));
+				
+				
+				
+			}
+		});
 
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
-		gl_contentPane.setHorizontalGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
-				.addGroup(gl_contentPane.createSequentialGroup().addContainerGap(522, Short.MAX_VALUE)
-						.addComponent(txtDni, GroupLayout.PREFERRED_SIZE, 116, GroupLayout.PREFERRED_SIZE).addGap(18)
-						.addComponent(btnBuscar).addGap(33))
-				.addGroup(Alignment.LEADING, gl_contentPane.createSequentialGroup().addContainerGap()
-						.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING).addComponent(btnEliminar)
-								.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 721, GroupLayout.PREFERRED_SIZE))
-						.addContainerGap(23, Short.MAX_VALUE)));
-		gl_contentPane.setVerticalGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_contentPane.createSequentialGroup().addGap(15)
-						.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-								.addComponent(txtDni, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
-										GroupLayout.PREFERRED_SIZE)
-								.addComponent(btnBuscar))
-						.addGap(18)
-						.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 186, GroupLayout.PREFERRED_SIZE)
-						.addGap(26).addComponent(btnEliminar).addContainerGap(44, Short.MAX_VALUE)));
+		gl_contentPane.setHorizontalGroup(
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addContainerGap(522, Short.MAX_VALUE)
+					.addComponent(txtDni, GroupLayout.PREFERRED_SIZE, 116, GroupLayout.PREFERRED_SIZE)
+					.addGap(18)
+					.addComponent(btnBuscar)
+					.addGap(33))
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(btnIngles)
+					.addGap(31)
+					.addComponent(btnEspañol)
+					.addGap(443)
+					.addComponent(btnEliminar)
+					.addContainerGap(23, Short.MAX_VALUE))
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 721, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(23, Short.MAX_VALUE))
+		);
+		gl_contentPane.setVerticalGroup(
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGap(15)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+						.addComponent(txtDni, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(btnBuscar))
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 186, GroupLayout.PREFERRED_SIZE)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(53)
+							.addComponent(btnEliminar)
+							.addContainerGap(29, Short.MAX_VALUE))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+								.addComponent(btnIngles)
+								.addComponent(btnEspañol))
+							.addContainerGap())))
+		);
 
 		tblTrabajadores = new JTable();
 		tblTrabajadores.setModel(new DefaultTableModel(
-				new Object[][] { { null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null }, { null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null }, { null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null }, { null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null }, { null, null, null, null, null, null, null },
-						{ null, null, null, null, null, null, null }, },
-				new String[] { "DNI", "NOMBRE", "APELLIDO", "EDAD", "CARGO", "SEXO", "\u00BFES EXTRANJERO?" }));
+			new Object[][] {
+				{" ", null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null, null},
+			},
+			new String[] {
+				"DNI", "NOMBRE", "APELLIDO", "DIRECCION", "EMAIL", "TELEFONO", "EDAD", "CARGO", "SEXO", "\u00BFES EXTRANJERO?"
+			}
+		));
 		scrollPane.setViewportView(tblTrabajadores);
 		contentPane.setLayout(gl_contentPane);
 	}
