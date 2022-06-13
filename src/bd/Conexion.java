@@ -14,7 +14,7 @@ public class Conexion {
 	private String usuario = "root";
 	private String contraseña = "";
 
-	private String url = "jdbc:mysql://" + host + "/" + bd;
+	private String url = "jdbc:mysql://" + host + "/";
 
 	// Creacion de Metodo para abrir y cerrar conexión.
 	
@@ -25,10 +25,19 @@ public class Conexion {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			conexion = DriverManager.getConnection(url, usuario, contraseña);
 			
+			/*if (conexion != null) {
+				System.out.println("Conexion exitosa a la BD:" + bd);
+			}*/
+			
 			Statement stmt = conexion.createStatement();
 			
 			String sqlBd = "CREATE DATABASE IF NOT EXISTS recursoshumanosapp";
 			stmt.execute(sqlBd);
+			
+			conexion.close(); 
+			
+			conexion = DriverManager.getConnection(url + bd, usuario, contraseña);
+			stmt = conexion.createStatement();
 			
 			String sqlTabla = "CREATE TABLE IF NOT EXISTS trabajador (dni VARCHAR(15) NOT NULL, "
 		    		+ "nombre VARCHAR(50) NOT NULL,"
